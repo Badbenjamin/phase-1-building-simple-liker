@@ -4,6 +4,10 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+mimicServerCall()
+.then((data) => {
+  console.log(data)
+})
 
 
 
