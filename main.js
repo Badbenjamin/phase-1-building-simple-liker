@@ -4,10 +4,41 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
-mimicServerCall()
-.then((data) => {
-  console.log(data)
-})
+// Click on empty heart
+const glyph = document.getElementsByClassName('like-glyph');
+
+for (let element of glyph) {
+  element.addEventListener("click", (e) => {
+    mimicServerCall()
+  .then(response => {
+    console.log(response);
+      if (element.textContent === EMPTY_HEART) {
+      element.textContent = FULL_HEART;
+      element.classList.add("activated-heart")
+    } else {
+      element.textContent = EMPTY_HEART;
+      element.classList.remove("activated-heart");
+    }
+  })
+  .catch((error) => {
+    console.log("error", error);
+    const errorMessage = document.getElementById('modal');
+    console.log(errorMessage.classList)
+    errorMessage.classList.remove("hidden");
+    console.log(errorMessage.classList)
+
+    
+    setTimeout(() => {
+      errorMessage.classList.add("hidden")
+    }, 3000)
+    console.log(errorMessage.classList)
+  })
+    
+  })
+}
+
+  
+
 
 
 
